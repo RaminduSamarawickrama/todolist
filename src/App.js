@@ -1,4 +1,4 @@
-import React, {useReducer, useRef, useState} from 'react';
+import React, { useReducer, useRef, useState } from 'react';
 import './App.css';
 import Todo from "./component/Todo";
 import AddTask from "./component/AddTask";
@@ -6,16 +6,18 @@ import AddTask from "./component/AddTask";
 function App() {
 
     const [items, setItems] = useState([]);
-    let textInput = useRef(null);
-    let currentItem;
 
+    
+    let currentItem;
+    let ref;
+    
     const onSubmit = e => {
         setItems([...items, currentItem])
         e.preventDefault()
     }
 
     const addItem = e => {
-        currentItem = textInput.current.value;
+        currentItem = ref.value;
     }
 
     return (
@@ -24,7 +26,7 @@ function App() {
                 <AddTask
                     addItem={addItem}
                     onSubmit={onSubmit}
-                    ref={textInput}
+                    ref={ref}
                 />
             </header>
         </div>
